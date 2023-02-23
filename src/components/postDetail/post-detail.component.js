@@ -48,10 +48,6 @@ export class PostDetailComponent extends LitElement {
     console.log("delete");
   }
 
-  createPost() {
-    console.log("create");
-  }
-
   render() {
     return html`<section class="section">
       <h2>Post Detail</h2>
@@ -59,23 +55,18 @@ export class PostDetailComponent extends LitElement {
     </section>`;
   }
 
-  agregarElemento(e) {
-    e.preventDefault();
+  addPost() {
+    const nuevoElemento = {
+      title: this.title,
+      body: this.body,
+    };
 
-    if (this.title && this.body) {
-      const nuevoElemento = {
-        title: this.title,
-        body: this.body,
-      };
-      this.dispatchEvent(
-        new CustomEvent("nuevo-elemento", { detail: nuevoElemento })
-      );
+    this.dispatchEvent(new CustomEvent("new-post", { detail: nuevoElemento }));
 
-      this.title = "";
-      this.body = "";
+    this.title = "";
+    this.body = "";
 
-      console.log(nuevoElemento);
-    }
+    console.log(nuevoElemento);
   }
 
   get input() {
@@ -97,6 +88,9 @@ export class PostDetailComponent extends LitElement {
         .value="${this.body || ""}"
         @input=${this.handleInputBody}
       ></input>
+
+      
+        <button type="button" @click="${this.addPost}">Agregar</button>
     </form>`;
   }
 
@@ -105,12 +99,7 @@ export class PostDetailComponent extends LitElement {
         text="Cancel"
         @click=${this.cancelPost}
       ></button-component>
-      <button-component
-        text="Create"
-        id="buttonCreate"
-        type="submit"
-        @click=${this.agregarElemento}
-      ></button-component>
+
       <button-component
         text="Update"
         @click=${this.updatePost}
@@ -123,4 +112,3 @@ export class PostDetailComponent extends LitElement {
 }
 
 customElements.define("post-detail-component", PostDetailComponent);
-// @click=${this.createPost}

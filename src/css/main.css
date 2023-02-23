@@ -18,5 +18,5 @@ body {
 
 .containers {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
 }

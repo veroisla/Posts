@@ -1,6 +1,13 @@
-import { html, LitElement } from "lit";
+import { html, LitElement, css } from "lit";
 
 export class PostsUI extends LitElement {
+  static get styles() {
+    return css`
+      h4 {
+        font-weight: bold;
+      }
+    `;
+  }
   static get properties() {
     return {
       posts: {
@@ -16,7 +23,6 @@ export class PostsUI extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("nuevo-elemento", this.agregarElemento.bind(this));
   }
 
   /* Guardar valor del title del post clicado */
@@ -41,18 +47,22 @@ export class PostsUI extends LitElement {
               id="post_${post.id}"
               @click=${this.handleClickPost}
             >
-              ${post.id} -- ${post.title} --${post.body}
+              <h4>${post.id} -- ${post.title}</h4>
+              --${post.body}
             </li>
           `
         )}
       </ul>
+      <post-detail-component
+        @new-post=${this.agregarElemento}
+      ></post-detail-component>
     `;
   }
 
   agregarElemento(e) {
+    e.preventDefault();
     const nuevoElemento = e.detail;
     this.posts = [...this.posts, nuevoElemento];
-    this.requestUpdate();
   }
 
   createRenderRoot() {

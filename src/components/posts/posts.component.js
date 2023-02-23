@@ -26,12 +26,18 @@ export class PostsComponent extends LitElement {
   }
 
   handleClick() {
-    console.log("add post");
+    console.log(this.posts);
+  }
+
+  async allOdds() {
+    const oddPostsUseCase = new OddPostsUseCase();
+    this.posts = await oddPostsUseCase.execute();
   }
 
   render() {
     return html`
       ${this.btnAdd}
+      <button @click="${this.allOdds}" id="oddAction">Odd</button>
       <posts-ui .posts="${this.posts}"></posts-ui>
     `;
   }

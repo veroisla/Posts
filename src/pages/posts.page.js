@@ -11,7 +11,7 @@ export class PostsPage extends HTMLElement {
             <h1 class="title">Posts Page</h1>
             <div class="containers">
             <genk-posts></genk-posts>
-            <post-detail-component></post-detail-component>
+          
             </div>
         `;
   }
