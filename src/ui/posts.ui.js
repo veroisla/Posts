@@ -13,8 +13,8 @@ export class PostsUI extends LitElement {
     super();
   }
 
-  handleClickPost() {
-    console.log(this.posts);
+  handleClickPost(event) {
+    console.log(`Post ${event.target.getAttribute("data-title")}`);
   }
 
   render() {
@@ -24,6 +24,8 @@ export class PostsUI extends LitElement {
         this.posts.map(
           (post) => html`
             <li
+              data-title="${post.title}"
+              data-body=${post.id}
               class="post"
               id="post_${post.id}"
               @click=${this.handleClickPost}
