@@ -25,33 +25,14 @@ export class PostsUI extends LitElement {
     }
   }
 
-  /**Método para guardar el valor del title y el body del post clicado*/
-  // handleClickPost(event) {
-  //   const title = event.currentTarget.getAttribute("data-title");
-  //   const body = event.currentTarget.getAttribute("data-body");
-
-  //   this.postDetail.setAttribute("title", title);
-  //   this.postDetail.setAttribute("body", body);
-
-  //   console.log(`title: ${title}`);
-  //   console.log(`body: ${body}`);
-  // }
-
+  /**Método para guardar el valor del title y el body del post clicado, se lo paso a postDetail*/
   handleClickPost(e) {
-    const id = e.target.closest(".post").dataset.id;
     const title = e.currentTarget.getAttribute("data-title");
     const body = e.currentTarget.getAttribute("data-body");
 
-    // Wait until PostDetail component has been created
-    const checkExist = setInterval(() => {
-      const postDetail = document.querySelector("post-detail-component");
-      if (postDetail) {
-        clearInterval(checkExist);
-
-        postDetail.setAttribute("title", title);
-        postDetail.setAttribute("body", body);
-      }
-    }, 100);
+    const postDetail = document.querySelector("post-detail-component");
+    postDetail.setAttribute("title", title);
+    postDetail.setAttribute("body", body);
   }
 
   render() {
