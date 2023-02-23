@@ -18,13 +18,6 @@ export class PostsUI extends LitElement {
     this.postDetail = null;
   }
 
-  updated() {
-    super.updated();
-    if (this.shadowRoot) {
-      this.postDetail = this.shadowRoot.querySelector("post-detail-component");
-    }
-  }
-
   /**Método para guardar el valor del title y el body del post clicado, se lo paso a postDetail*/
   handleClickPost(e) {
     const title = e.currentTarget.getAttribute("data-title");
@@ -61,7 +54,6 @@ export class PostsUI extends LitElement {
         </div>
 
         <post-detail-component
-          id="postDetailComponent"
           title=${this.title}
           body=${this.body}
           @new-post=${this.agregarElemento}
