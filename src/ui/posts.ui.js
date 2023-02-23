@@ -6,6 +6,9 @@ export class PostsUI extends LitElement {
       posts: {
         type: Array,
       },
+
+      title: { type: String },
+      body: { type: String },
     };
   }
 
@@ -18,9 +21,8 @@ export class PostsUI extends LitElement {
     super.connectedCallback();
   }
 
-  /* Guardar valor del title del post clicado */
+  /**Método para guardar el valor del title y el body del post clicado*/
   handleClickPost(event) {
-    // console.log(`Post ${event.target.getAttribute("data-title")}`);
     const title = event.currentTarget.getAttribute("data-title");
     const body = event.currentTarget.getAttribute("data-body");
     console.log(`title: ${title}`);

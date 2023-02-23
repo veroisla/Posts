@@ -26,41 +26,7 @@ export class PostDetailComponent extends LitElement {
     this.onSubmit = false;
   }
 
-  //Inputs guardar valor y borrar contenido//
-
-  cancelPost() {
-    console.log("Cancel");
-    this.title = "";
-    this.body = "";
-  }
-
-  handleInputTitle(e) {
-    this.title = e.target.value;
-    console.log(this.title);
-  }
-
-  handleInputBody(e) {
-    this.body = e.target.value;
-    console.log(`body ${this.body}`);
-  }
-
-  //
-
-  updatePost() {
-    console.log("update");
-  }
-
-  deletePost() {
-    console.log("delete");
-  }
-
-  render() {
-    return html`<section class="section">
-      <h2>Post Detail</h2>
-      ${this.input}
-    </section>`;
-  }
-
+  /** Método para añadir un nuevo post a la lista de post */
   addPost() {
     if (this.title && this.body) {
       const nuevoElemento = {
@@ -79,10 +45,44 @@ export class PostDetailComponent extends LitElement {
     }
   }
 
+  /** Método para cancelar acción y limpiar input */
+  cancelPost() {
+    console.log("Cancel");
+    this.title = "";
+    this.body = "";
+  }
+
+  handleInputTitle(e) {
+    this.title = e.target.value;
+    console.log(this.title);
+  }
+
+  handleInputBody(e) {
+    this.body = e.target.value;
+    console.log(`body ${this.body}`);
+  }
+
+  /**Método para eliminar post */
+  deletePost() {
+    console.log("delete");
+  }
+
+  /**Método para modificar post */
+  updatePost() {
+    console.log("update");
+  }
+
+  render() {
+    return html`<section class="section">
+      <h2>Post Detail</h2>
+      ${this.input}
+    </section>`;
+  }
+
   get input() {
     return html` <form class="container-inputs">
     <div class="textarea-container">
-       <label for=title class="label">Title</label>
+      <label for=title class="label">Title</label>
       <input
         id=titleInput
         class="input input-textarea"
@@ -90,9 +90,9 @@ export class PostDetailComponent extends LitElement {
         .value="${this.title || ""}"
         @input=${this.handleInputTitle}
       ></input>
-      </div>
+    </div>
      
-           <div class="textarea-container">
+    <div class="textarea-container">
       <label for=body class="label">Body</label>
       <input
         id=BodyInput
@@ -101,7 +101,7 @@ export class PostDetailComponent extends LitElement {
         .value="${this.body || ""}"
         @input=${this.handleInputBody}
       ></input>
-      </div>
+    </div>
        ${this.btnAction}
     </form>`;
   }

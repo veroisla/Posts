@@ -30,6 +30,14 @@ body {
   margin-bottom: 30px;
 }
 
+.post {
+  cursor: pointer;
+}
+
+.post:hover {
+  border: 1.5px solid var(--hover-color);
+}
+
 .titlePost {
   font-weight: bold;
 }
