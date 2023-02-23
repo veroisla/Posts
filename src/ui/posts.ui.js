@@ -11,8 +11,15 @@ export class PostsUI extends LitElement {
 
   constructor() {
     super();
+    this.posts = [];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("nuevo-elemento", this.agregarElemento.bind(this));
+  }
+
+  /* Guardar valor del title del post clicado */
   handleClickPost(event) {
     // console.log(`Post ${event.target.getAttribute("data-title")}`);
     const title = event.target.getAttribute("data-title");
@@ -32,12 +39,17 @@ export class PostsUI extends LitElement {
               id="post_${post.id}"
               @click=${this.handleClickPost}
             >
-              ${post.id} -- ${post.title}
+              ${post.id} -- ${post.title} --${post.body}
             </li>
           `
         )}
       </ul>
     `;
+  }
+
+  agregarElemento(e) {
+    const nuevoElemento = e.detail;
+    this.posts = [...this.posts, nuevoElemento];
   }
 
   createRenderRoot() {

@@ -59,8 +59,23 @@ export class PostDetailComponent extends LitElement {
     </section>`;
   }
 
+  agregarElemento(e) {
+    e.preventDefault();
+
+    if (this.valueTitle && this.valueBody) {
+      const nuevoElemento = { title: this.title, body: this.body };
+      this.dispatchEvent(
+        new CustomEvent("nuevo-elemento", { detail: nuevoElemento })
+      );
+      this.title = "";
+      this.body = "";
+
+      console.log(nuevoElemento);
+    }
+  }
+
   get input() {
-    return html` <form class="container-inputs">
+    return html` <form class="container-inputs" @submit=${this.agregarElemento}>
        <label for=title class="label">Title</label>
       <input
         id=titleInput
@@ -89,7 +104,8 @@ export class PostDetailComponent extends LitElement {
       <button-component
         text="Create"
         id="buttonCreate"
-        @click=${this.createPost}
+        type="submit"
+        @click=${this.agregarElemento}
       ></button-component>
       <button-component
         text="Update"
@@ -103,3 +119,4 @@ export class PostDetailComponent extends LitElement {
 }
 
 customElements.define("post-detail-component", PostDetailComponent);
+// @click=${this.createPost}
