@@ -9,10 +9,7 @@ export class PostsPage extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
             <h1 class="title">Posts Page</h1>
-            <div class="containers">
             <genk-posts></genk-posts>
-          
-            </div>
         `;
   }
 }

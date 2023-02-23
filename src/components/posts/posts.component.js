@@ -3,7 +3,6 @@ import { AllPostsUseCase } from "../../usecases/all-posts.usecase";
 import { OddPostsUseCase } from "../../usecases/odd-posts.usecase";
 import "../../ui/posts.ui";
 import { PostsComponentStyle } from "./posts-styles";
-import "../button/button.component";
 
 export class PostsComponent extends LitElement {
   static get styles() {
@@ -29,17 +28,8 @@ export class PostsComponent extends LitElement {
     console.log(this.posts);
   }
 
-  async allOdds() {
-    const oddPostsUseCase = new OddPostsUseCase();
-    this.posts = await oddPostsUseCase.execute();
-  }
-
   render() {
-    return html`
-      ${this.btnAdd}
-      <button @click="${this.allOdds}" id="oddAction">Odd</button>
-      <posts-ui .posts="${this.posts}"></posts-ui>
-    `;
+    return html` <posts-ui .posts="${this.posts}"></posts-ui> `;
   }
 
   get btnAdd() {

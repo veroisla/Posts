@@ -51,22 +51,26 @@ export class PostDetailComponent extends LitElement {
   render() {
     return html`<section class="section">
       <h2>Post Detail</h2>
-      ${this.input} ${this.btnAction}
+      ${this.input}
     </section>`;
   }
 
   addPost() {
-    const nuevoElemento = {
-      title: this.title,
-      body: this.body,
-    };
+    if (this.title && this.body) {
+      const nuevoElemento = {
+        title: this.title,
+        body: this.body,
+      };
 
-    this.dispatchEvent(new CustomEvent("new-post", { detail: nuevoElemento }));
+      this.dispatchEvent(
+        new CustomEvent("new-post", { detail: nuevoElemento })
+      );
 
-    this.title = "";
-    this.body = "";
+      this.title = "";
+      this.body = "";
 
-    console.log(nuevoElemento);
+      console.log(nuevoElemento);
+    }
   }
 
   get input() {
@@ -89,17 +93,20 @@ export class PostDetailComponent extends LitElement {
         @input=${this.handleInputBody}
       ></input>
 
-      
-        <button type="button" @click="${this.addPost}">Agregar</button>
+       ${this.btnAction}
     </form>`;
   }
 
   get btnAction() {
-    return html` <button-component
+    return html` <div class="container-btns">
+      <button-component
+        text="Agregar"
+        @click="${this.addPost}"
+      ></button-component>
+      <button-component
         text="Cancel"
         @click=${this.cancelPost}
       ></button-component>
-
       <button-component
         text="Update"
         @click=${this.updatePost}
@@ -107,7 +114,8 @@ export class PostDetailComponent extends LitElement {
       <button-component
         text="Delete"
         @click=${this.deletePost}
-      ></button-component>`;
+      ></button-component>
+    </div>`;
   }
 }
 

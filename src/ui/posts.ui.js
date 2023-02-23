@@ -6,6 +6,10 @@ export class PostsUI extends LitElement {
       h4 {
         font-weight: bold;
       }
+
+      .containers {
+        display: flex;
+      }
     `;
   }
   static get properties() {
@@ -36,26 +40,30 @@ export class PostsUI extends LitElement {
 
   render() {
     return html`
-      <ul id="posts">
-        ${this.posts &&
-        this.posts.map(
-          (post) => html`
-            <li
-              data-title="${post.title}"
-              data-body=${post.body}
-              class="post"
-              id="post_${post.id}"
-              @click=${this.handleClickPost}
-            >
-              <h4>${post.id} -- ${post.title}</h4>
-              --${post.body}
-            </li>
-          `
-        )}
-      </ul>
-      <post-detail-component
-        @new-post=${this.agregarElemento}
-      ></post-detail-component>
+      <div class="containers">
+        <ul id="posts">
+          ${this.posts &&
+          this.posts.map(
+            (post) => html`
+              <li
+                data-title="${post.title}"
+                data-body=${post.body}
+                class="post"
+                id="post_${post.id}"
+                @click=${this.handleClickPost}
+              >
+                <h4>${post.id} -- ${post.title}</h4>
+                --${post.body}
+              </li>
+            `
+          )}
+        </ul>
+        <div>
+          <post-detail-component
+            @new-post=${this.agregarElemento}
+          ></post-detail-component>
+        </div>
+      </div>
     `;
   }
 

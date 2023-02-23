@@ -14,6 +14,11 @@ export const PostDetailComponentStyle = css`
     justify-content: space-evenly;
   }
 
+  .container-btns {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .notShow {
     display: none;
     font-size: 30px;
