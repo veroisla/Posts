@@ -54,12 +54,10 @@ export class PostDetailComponent extends LitElement {
 
   handleInputTitle(e) {
     this.title = e.target.value;
-    console.log(this.title);
   }
 
   handleInputBody(e) {
     this.body = e.target.value;
-    console.log(`body ${this.body}`);
   }
 
   /**Método para eliminar post */

@@ -15,18 +15,43 @@ export class PostsUI extends LitElement {
   constructor() {
     super();
     this.posts = [];
+    this.postDetail = null;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  updated() {
+    super.updated();
+    if (this.shadowRoot) {
+      this.postDetail = this.shadowRoot.querySelector("post-detail-component");
+    }
   }
 
   /**Método para guardar el valor del title y el body del post clicado*/
-  handleClickPost(event) {
-    const title = event.currentTarget.getAttribute("data-title");
-    const body = event.currentTarget.getAttribute("data-body");
-    console.log(`title: ${title}`);
-    console.log(`body: ${body}`);
+  // handleClickPost(event) {
+  //   const title = event.currentTarget.getAttribute("data-title");
+  //   const body = event.currentTarget.getAttribute("data-body");
+
+  //   this.postDetail.setAttribute("title", title);
+  //   this.postDetail.setAttribute("body", body);
+
+  //   console.log(`title: ${title}`);
+  //   console.log(`body: ${body}`);
+  // }
+
+  handleClickPost(e) {
+    const id = e.target.closest(".post").dataset.id;
+    const title = e.currentTarget.getAttribute("data-title");
+    const body = e.currentTarget.getAttribute("data-body");
+
+    // Wait until PostDetail component has been created
+    const checkExist = setInterval(() => {
+      const postDetail = document.querySelector("post-detail-component");
+      if (postDetail) {
+        clearInterval(checkExist);
+
+        postDetail.setAttribute("title", title);
+        postDetail.setAttribute("body", body);
+      }
+    }, 100);
   }
 
   render() {
@@ -47,7 +72,6 @@ export class PostsUI extends LitElement {
                   <h4 class="titlePost" data-title="${post.title}">
                     ${post.id} - ${post.title}
                   </h4>
-
                   <p class="bodyPost" data-body=${post.body}>${post.body}</p>
                 </li>
               `
@@ -56,6 +80,9 @@ export class PostsUI extends LitElement {
         </div>
 
         <post-detail-component
+          id="postDetailComponent"
+          title=${this.title}
+          body=${this.body}
           @new-post=${this.agregarElemento}
         ></post-detail-component>
       </div>
