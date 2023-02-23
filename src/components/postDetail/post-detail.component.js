@@ -9,33 +9,33 @@ export class PostDetailComponent extends LitElement {
 
   static get properties() {
     return {
-      valueTitle: { type: String },
-      valueBody: { type: String },
+      title: { type: String },
+      body: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.valueTitle = "";
-    this.valueBody = "";
+    this.title = "";
+    this.body = "";
   }
 
   //Inputs guardar valor y borrar contenido//
 
   cancelPost() {
     console.log("Cancel");
-    this.valueTitle = "";
-    this.valueBody = "";
+    this.title = "";
+    this.body = "";
   }
 
   handleInputTitle(e) {
-    this.valueTitle = e.target.value;
-    console.log(this.valueTitle);
+    this.title = e.target.value;
+    console.log(this.title);
   }
 
   handleInputBody(e) {
-    this.valueBody = e.target.value;
-    console.log(`body ${this.valueBody}`);
+    this.body = e.target.value;
+    console.log(`body ${this.body}`);
   }
 
   //
@@ -62,13 +62,17 @@ export class PostDetailComponent extends LitElement {
   agregarElemento(e) {
     e.preventDefault();
 
-    if (this.valueTitle && this.valueBody) {
-      const nuevoElemento = { title: this.valueTitle, body: this.valueBody };
+    if (this.title && this.body) {
+      const nuevoElemento = {
+        title: this.title,
+        body: this.body,
+      };
       this.dispatchEvent(
         new CustomEvent("nuevo-elemento", { detail: nuevoElemento })
       );
-      this.valueTitle = "";
-      this.valueBody = "";
+
+      this.title = "";
+      this.body = "";
 
       console.log(nuevoElemento);
     }
@@ -81,7 +85,7 @@ export class PostDetailComponent extends LitElement {
         id=titleInput
         class="input input-textarea"
         placeholder="Añade un título"
-        .value="${this.valueTitle || ""}"
+        .value="${this.title || ""}"
         @input=${this.handleInputTitle}
       ></input>
 
@@ -90,7 +94,7 @@ export class PostDetailComponent extends LitElement {
         id=BodyInput
         class="input input-textarea"
         placeholder="Añade información"
-        .value="${this.valueBody || ""}"
+        .value="${this.body || ""}"
         @input=${this.handleInputBody}
       ></input>
     </form>`;

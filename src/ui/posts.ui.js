@@ -23,7 +23,9 @@ export class PostsUI extends LitElement {
   handleClickPost(event) {
     // console.log(`Post ${event.target.getAttribute("data-title")}`);
     const title = event.target.getAttribute("data-title");
+    const body = event.target.getAttribute("data-body");
     console.log(`title: ${title}`);
+    console.log(`body: ${body}`);
   }
 
   render() {
@@ -34,7 +36,7 @@ export class PostsUI extends LitElement {
           (post) => html`
             <li
               data-title="${post.title}"
-              data-body=${post.id}
+              data-body=${post.body}
               class="post"
               id="post_${post.id}"
               @click=${this.handleClickPost}
@@ -50,6 +52,7 @@ export class PostsUI extends LitElement {
   agregarElemento(e) {
     const nuevoElemento = e.detail;
     this.posts = [...this.posts, nuevoElemento];
+    this.requestUpdate();
   }
 
   createRenderRoot() {
