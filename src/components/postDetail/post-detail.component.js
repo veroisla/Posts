@@ -63,12 +63,12 @@ export class PostDetailComponent extends LitElement {
     e.preventDefault();
 
     if (this.valueTitle && this.valueBody) {
-      const nuevoElemento = { title: this.title, body: this.body };
+      const nuevoElemento = { title: this.valueTitle, body: this.valueBody };
       this.dispatchEvent(
         new CustomEvent("nuevo-elemento", { detail: nuevoElemento })
       );
-      this.title = "";
-      this.body = "";
+      this.valueTitle = "";
+      this.valueBody = "";
 
       console.log(nuevoElemento);
     }
