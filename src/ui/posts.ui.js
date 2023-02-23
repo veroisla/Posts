@@ -9,13 +9,25 @@ export class PostsUI extends LitElement {
     };
   }
 
+  constructor() {
+    super();
+  }
+
+  handleClickPost() {
+    console.log(this.posts);
+  }
+
   render() {
     return html`
       <ul id="posts">
         ${this.posts &&
         this.posts.map(
           (post) => html`
-            <li class="post" id="post_${post.id}">
+            <li
+              class="post"
+              id="post_${post.id}"
+              @click=${this.handleClickPost}
+            >
               ${post.id} -- ${post.title}
             </li>
           `

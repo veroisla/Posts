@@ -1,7 +1,6 @@
 import { html, LitElement } from "lit";
 import { PostDetailComponentStyle } from "./post-detail-styles";
 import "../button/button.component";
-import "../input/input.component";
 
 export class PostDetailComponent extends LitElement {
   static get styles() {
