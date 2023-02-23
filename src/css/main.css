@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(236, 204, 209);
+}
+
+/* PostPage */
+
+.title {
+  margin-bottom: 50px;
+}
+
+.containers {
+  display: flex;
+  justify-content: space-around;
+}
