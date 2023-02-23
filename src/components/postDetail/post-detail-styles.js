@@ -13,4 +13,9 @@ export const PostDetailComponentStyle = css`
     flex-direction: column;
     justify-content: space-evenly;
   }
+
+  .notShow {
+    display: none;
+    font-size: 30px;
+  }
 `;

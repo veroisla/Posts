@@ -10,6 +10,9 @@ export class ButtonComponent extends LitElement {
     return {
       text: { type: String },
       disable: { type: Boolean },
+      styleBtn: { type: String },
+      notShow: { type: String },
+      id: { type: String },
     };
   }
 
@@ -23,6 +26,8 @@ export class ButtonComponent extends LitElement {
       class="btn ${this.disable ? "disabled-btn" : ""}"
       @click=${this.clickButton}
       ?disabled=${this.disable}
+      style=${this.styleBtn}
+      id=${this.id}
     >
       ${this.text}
     </button>`;

@@ -28,4 +28,8 @@ export const ButtonComponentStyle = css`
     background-color: var(--color-grey-light-2);
     color: var(--color-grey);
   }
+
+  .notShow {
+    display: none;
+  }
 `;
