@@ -28,6 +28,17 @@ export class PostsUI extends LitElement {
     postDetail.setAttribute("body", body);
   }
 
+  //
+
+  handleDeletePost(e) {
+    const postId = e.detail.id;
+    const index = this.posts.findIndex((post) => post.id === postId);
+    if (index > -1) {
+      this.posts.splice(index, 1);
+      this.requestUpdate();
+    }
+  }
+
   render() {
     return html`
       <div class="containers">
@@ -57,6 +68,7 @@ export class PostsUI extends LitElement {
           title=${this.title}
           body=${this.body}
           @new-post=${this.agregarElemento}
+          @delete-post=${this.handleDeletePost}
         ></post-detail-component>
       </div>
     `;
