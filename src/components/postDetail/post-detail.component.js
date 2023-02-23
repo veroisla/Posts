@@ -60,7 +60,7 @@ export class PostDetailComponent extends LitElement {
   }
 
   get input() {
-    return html` <div class="container-inputs">
+    return html` <form class="container-inputs">
        <label for=title class="label">Title</label>
       <input
         id=titleInput
@@ -78,7 +78,7 @@ export class PostDetailComponent extends LitElement {
         .value="${this.valueBody || ""}"
         @input=${this.handleInputBody}
       ></input>
-    </div>`;
+    </form>`;
   }
 
   get btnAction() {
@@ -103,18 +103,3 @@ export class PostDetailComponent extends LitElement {
 }
 
 customElements.define("post-detail-component", PostDetailComponent);
-
-// get input() {
-//   return html` <div class="container-inputs">
-//     <input-component
-//       name="title"
-//       label="Title"
-//       placeholder="Añade un título"
-//     ></input-component>
-//     <input-component
-//       name="body"
-//       label="Body"
-//       placeholder="Añade información"
-//     ></input-component>
-//   </div>`;
-// }

@@ -17,8 +17,6 @@ export class PostsUI extends LitElement {
     // console.log(`Post ${event.target.getAttribute("data-title")}`);
     const title = event.target.getAttribute("data-title");
     console.log(`title: ${title}`);
-
-    this.dispatchEvent(new CustomEvent("item-selected", { detail: { title } }));
   }
 
   render() {
