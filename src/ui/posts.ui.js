@@ -14,7 +14,11 @@ export class PostsUI extends LitElement {
   }
 
   handleClickPost(event) {
-    console.log(`Post ${event.target.getAttribute("data-title")}`);
+    // console.log(`Post ${event.target.getAttribute("data-title")}`);
+    const title = event.target.getAttribute("data-title");
+    console.log(`title: ${title}`);
+
+    this.dispatchEvent(new CustomEvent("item-selected", { detail: { title } }));
   }
 
   render() {
@@ -44,5 +48,3 @@ export class PostsUI extends LitElement {
 }
 
 customElements.define("posts-ui", PostsUI);
-
-//addEventListener map post ui
