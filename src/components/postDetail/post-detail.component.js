@@ -67,8 +67,8 @@ export class PostDetailComponent extends LitElement {
         id: this.postId,
       },
     });
+
     this.dispatchEvent(deleteEvent);
-    console.log("delete");
 
     this.title = "";
     this.body = "";

@@ -28,8 +28,7 @@ export class PostsUI extends LitElement {
     postDetail.setAttribute("body", body);
   }
 
-  //
-
+  /**Método para eliminar un post seleccionado */
   handleDeletePost(e) {
     const postId = e.detail.id;
     const index = this.posts.findIndex((post) => post.id === postId);
@@ -85,3 +84,12 @@ export class PostsUI extends LitElement {
 }
 
 customElements.define("posts-ui", PostsUI);
+
+// handleDeletePost :
+// El código define una función llamada handleDeletePost que toma un evento como parámetro.
+// La función obtiene el id del post a eliminar del detalle del evento usando la propiedad detail.id.
+
+// Luego, la función usa el método findIndex para encontrar el índice del post dentro del arreglo posts
+//  que tiene el mismo id. Si se encuentra un post con ese id, se elimina del arreglo usando el método splice y
+//   se solicita una actualización del componente mediante el método requestUpdate.
+//   La actualización se realizará en el próximo ciclo de actualización del DOM.
