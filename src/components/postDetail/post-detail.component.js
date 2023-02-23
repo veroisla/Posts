@@ -1,5 +1,6 @@
 import { html, LitElement } from "lit";
 import { PostDetailComponentStyle } from "./post-detail-styles";
+
 import "../button/button.component";
 
 export class PostDetailComponent extends LitElement {
@@ -18,6 +19,11 @@ export class PostDetailComponent extends LitElement {
     super();
     this.title = "";
     this.body = "";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.onSubmit = false;
   }
 
   //Inputs guardar valor y borrar contenido//
@@ -74,7 +80,8 @@ export class PostDetailComponent extends LitElement {
   }
 
   get input() {
-    return html` <form class="container-inputs" @submit=${this.agregarElemento}>
+    return html` <form class="container-inputs">
+    <div class="textarea-container">
        <label for=title class="label">Title</label>
       <input
         id=titleInput
@@ -83,8 +90,10 @@ export class PostDetailComponent extends LitElement {
         .value="${this.title || ""}"
         @input=${this.handleInputTitle}
       ></input>
-
-        <label for=body class="label">Body</label>
+      </div>
+     
+           <div class="textarea-container">
+      <label for=body class="label">Body</label>
       <input
         id=BodyInput
         class="input input-textarea"
@@ -92,7 +101,7 @@ export class PostDetailComponent extends LitElement {
         .value="${this.body || ""}"
         @input=${this.handleInputBody}
       ></input>
-
+      </div>
        ${this.btnAction}
     </form>`;
   }
