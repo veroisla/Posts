@@ -1,5 +1,13 @@
 body {
-  background-color: rgb(236, 204, 209);
+  background-color: var(--background-page);
+}
+
+:root {
+  --background-page: #f2f2f2;
+  --color-white: #ffffff;
+  --border-color: rgb(235, 202, 207);
+  --hover-color: rgb(241, 157, 170);
+  --disabled-color: lightgrey;
 }
 
 /* PostPage */
