@@ -41,25 +41,31 @@ export class PostsUI extends LitElement {
     return html`
       <div class="containers">
         <div class="container-posts">
-          <ul id="posts">
-            ${this.posts &&
-            this.posts.map(
-              (post) => html`
-                <li
-                  data-title="${post.title}"
-                  data-body=${post.body}
-                  class="post"
-                  id="post_${post.id}"
-                  @click=${this.handleClickPost}
-                >
-                  <h4 class="titlePost" data-title="${post.title}">
-                    ${post.id} - ${post.title}
-                  </h4>
-                  <p class="bodyPost" data-body=${post.body}>${post.body}</p>
-                </li>
-              `
-            )}
-          </ul>
+          <div
+            class=${this.posts.length <= 5
+              ? "container-posts "
+              : "box-scrollBar"}
+          >
+            <ul id="posts" class="list">
+              ${this.posts &&
+              this.posts.map(
+                (post) => html`
+                  <li
+                    data-title="${post.title}"
+                    data-body=${post.body}
+                    class="post"
+                    id="post_${post.id}"
+                    @click=${this.handleClickPost}
+                  >
+                    <h4 class="titlePost" data-title="${post.title}">
+                      ${post.id} - ${post.title}
+                    </h4>
+                    <p class="bodyPost" data-body=${post.body}>${post.body}</p>
+                  </li>
+                `
+              )}
+            </ul>
+          </div>
         </div>
 
         <post-detail-component
