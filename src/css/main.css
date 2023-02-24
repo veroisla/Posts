@@ -14,7 +14,11 @@ body {
 /* PostPage */
 
 .title {
-  margin-bottom: 50px;
+  margin: 50px 0 50px 0;
+  font-size: 30px;
+  margin-left: 80px;
+  color: var(--dark-grey);
+  font-weight: bold;
 }
 
 .containers {

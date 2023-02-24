@@ -29,19 +29,17 @@ export class PostDetailComponent extends LitElement {
   /** Método para añadir un nuevo post a la lista de post */
   addPost() {
     if (this.title && this.body) {
-      const nuevoElemento = {
+      const newPost = {
         title: this.title,
         body: this.body,
       };
 
-      this.dispatchEvent(
-        new CustomEvent("new-post", { detail: nuevoElemento })
-      );
+      this.dispatchEvent(new CustomEvent("new-post", { detail: newPost }));
 
       this.title = "";
       this.body = "";
 
-      console.log(nuevoElemento);
+      console.log(newPost);
     }
   }
 
@@ -89,7 +87,7 @@ export class PostDetailComponent extends LitElement {
   get input() {
     return html` <form class="container-inputs">
     <div class="textarea-container">
-      <label for=title class="label">Title</label>
+      <label for=title class="label">Título</label>
       <input
         id=titleInput
         class="input input-textarea"
@@ -120,15 +118,15 @@ export class PostDetailComponent extends LitElement {
         @click="${this.addPost}"
       ></button-component>
       <button-component
-        text="Cancel"
+        text="Cancelar"
         @click=${this.cancelPost}
       ></button-component>
       <button-component
-        text="Update"
+        text="Modificar"
         @click=${this.updatePost}
       ></button-component>
       <button-component
-        text="Delete"
+        text="Eliminar"
         @click=${this.deletePost}
       ></button-component>
     </div>`;

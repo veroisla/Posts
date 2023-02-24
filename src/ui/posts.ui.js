@@ -3,12 +3,11 @@ import { css, html, LitElement } from "lit";
 export class PostsUI extends LitElement {
   static get properties() {
     return {
-      posts: {
-        type: Array,
-      },
-
+      posts: { type: Array },
       title: { type: String },
       body: { type: String },
+
+      selectedPost: { type: Object },
     };
   }
 
@@ -66,16 +65,16 @@ export class PostsUI extends LitElement {
         <post-detail-component
           title=${this.title}
           body=${this.body}
-          @new-post=${this.agregarElemento}
+          @new-post=${this.addNewPost}
           @delete-post=${this.handleDeletePost}
         ></post-detail-component>
       </div>
     `;
   }
 
-  agregarElemento(e) {
-    const nuevoElemento = e.detail;
-    this.posts = [...this.posts, nuevoElemento];
+  addNewPost(e) {
+    const newPost = e.detail;
+    this.posts = [...this.posts, newPost];
   }
 
   createRenderRoot() {
@@ -84,12 +83,3 @@ export class PostsUI extends LitElement {
 }
 
 customElements.define("posts-ui", PostsUI);
-
-// handleDeletePost :
-// El código define una función llamada handleDeletePost que toma un evento como parámetro.
-// La función obtiene el id del post a eliminar del detalle del evento usando la propiedad detail.id.
-
-// Luego, la función usa el método findIndex para encontrar el índice del post dentro del arreglo posts
-//  que tiene el mismo id. Si se encuentra un post con ese id, se elimina del arreglo usando el método splice y
-//   se solicita una actualización del componente mediante el método requestUpdate.
-//   La actualización se realizará en el próximo ciclo de actualización del DOM.
