@@ -23,9 +23,8 @@ export class ButtonComponent extends LitElement {
   render() {
     return html`<button
       type="button"
-      class="btn ${this.disable ? "disabled-btn" : ""}"
+      class="btn"
       @click=${this.clickButton}
-      ?disabled=${this.disable}
       style=${this.styleBtn}
       id=${this.id}
     >

@@ -60,16 +60,18 @@ export class PostDetailComponent extends LitElement {
 
   /**Método para eliminar post */
   deletePost() {
-    const deleteEvent = new CustomEvent("delete-post", {
-      detail: {
-        id: this.postId,
-      },
-    });
+    if (this.title && this.body) {
+      const deleteEvent = new CustomEvent("delete-post", {
+        detail: {
+          id: this.postId,
+        },
+      });
 
-    this.dispatchEvent(deleteEvent);
+      this.dispatchEvent(deleteEvent);
 
-    this.title = "";
-    this.body = "";
+      this.title = "";
+      this.body = "";
+    }
   }
 
   /**Método para modificar post */

@@ -31,6 +31,7 @@ export class PostsUI extends LitElement {
   handleDeletePost(e) {
     const postId = e.detail.id;
     const index = this.posts.findIndex((post) => post.id === postId);
+
     if (index > -1) {
       this.posts.splice(index, 1);
       this.requestUpdate();
@@ -41,11 +42,7 @@ export class PostsUI extends LitElement {
     return html`
       <div class="containers">
         <div class="container-posts">
-          <div
-            class=${this.posts.length <= 5
-              ? "container-posts "
-              : "box-scrollBar"}
-          >
+          <div class=${this.posts <= 5 ? "container-posts " : "box-scrollBar"}>
             <ul id="posts" class="list">
               ${this.posts &&
               this.posts.map(
