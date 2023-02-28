@@ -63,7 +63,7 @@ export class PostDetailComponent extends LitElement {
     if (this.title && this.body) {
       const deleteEvent = new CustomEvent("delete-post", {
         detail: {
-          id: this.postId,
+          title: this.title,
         },
       });
 

@@ -29,8 +29,8 @@ export class PostsUI extends LitElement {
 
   /**Método para eliminar un post seleccionado */
   handleDeletePost(e) {
-    const postId = e.detail.id;
-    const index = this.posts.findIndex((post) => post.id === postId);
+    const postTitle = e.detail.title;
+    const index = this.posts.findIndex((post) => post.title === postTitle);
 
     if (index > -1) {
       this.posts.splice(index, 1);
